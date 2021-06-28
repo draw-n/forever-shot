@@ -7,3 +7,8 @@ var game_over = false
 func _process(delta):
 	if available_ships.empty():
 		game_over = true
+
+var speed = 100
+
+var downCount = 5
+var upCount = 5

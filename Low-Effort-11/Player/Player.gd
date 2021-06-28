@@ -23,13 +23,15 @@ func move_state(delta):
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if Input.is_action_just_pressed("ui_up"):
 		SoundManager.play_fixed_sound(0)
-		if num_check > -64:
+		if num_check > -64 and GameData.upCount > 0:
 			self.global_position.y -= 32
+			GameData.upCount -= 1
 			num_check -= 32
 	if Input.is_action_just_pressed("ui_down"):
 		SoundManager.play_fixed_sound(0)
-		if num_check < 64:
+		if num_check < 64 and GameData.downCount > 0:
 			self.global_position.y += 32
+			GameData.downCount -= 1
 			num_check += 32
 	input_vector = input_vector.normalized()
 	if input_vector != Vector2.ZERO:
@@ -39,10 +41,10 @@ func move_state(delta):
 		
 	velocity = move_and_slide(velocity)
 	
-	if Input.is_action_just_pressed("ui_accept") and timer.is_stopped():
+	if Input.is_action_just_pressed("ui_accept"): #and timer.is_stopped():
 		SoundManager.play_fixed_sound(2)
 		var projectile = PROJECTILE_SCENE.instance()
 		projectile.global_position = bulletSpawner.global_position
 		get_tree().current_scene.add_child(projectile)
-		timer.start()
+		#timer.start()
 
