@@ -14,6 +14,7 @@ func _ready():
 			self.texture = up
 
 func _process(delta):
+	self.visible = !GameData.main_menu
 	match direction:
 		0:
 			label.text = str(GameData.downCount)

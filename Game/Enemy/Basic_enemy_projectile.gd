@@ -2,7 +2,6 @@ extends Node2D
 
 const POINT_SCENE = preload("res://Player/Point.tscn")
 
-
 func _ready():
 	set_process(true)
 
@@ -21,6 +20,7 @@ func _on_HurtBox_area_entered(area):
 	spawn_point()
 	GameData.enemies_destroyed += 1
 	queue_free()
+
 
 func spawn_point():
 	var point = POINT_SCENE.instance()

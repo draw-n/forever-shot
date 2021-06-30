@@ -8,7 +8,8 @@ func _ready():
 	randomize()
 
 func _on_Timer_timeout():
-	for i in enemySpawners.get_children():
-		if randi() % 6 + 1 == i.num and i.num in GameData.available_ships:
-			i.spawn = true
+	if GameData.main_menu == false:
+		for i in enemySpawners.get_children():
+			if randi() % 6 + 1 == i.num and i.num in GameData.available_ships:
+				i.spawn = true
 	timer.start()

@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 100
+const SPEED = 200
 
 func _ready():
 	set_process(true)

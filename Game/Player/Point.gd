@@ -32,5 +32,3 @@ func _on_Point_body_entered(body):
 		1:
 			GameData.upCount += 1
 	queue_free()
-	print(GameData.downCount)
-	print(GameData.upCount)

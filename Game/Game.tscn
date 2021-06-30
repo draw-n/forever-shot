@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/EnemySpawner.tscn" type="PackedScene" id=2]
@@ -8,20 +8,32 @@
 [ext_resource path="res://GameOver.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Scorel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Counter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Base Ship/background.png" type="Texture" id=9]
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=10]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_strength = 1.25
+glow_bloom = 0.01
+glow_blend_mode = 0
+adjustment_enabled = true
+adjustment_brightness = 1.25
+
+[sub_resource type="CanvasItemMaterial" id=2]
 
 [node name="Game" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( -40, 8 )
-polygon = PoolVector2Array( 0, -8, 0, 264, 40, 264, 40, -8 )
+position = Vector2( 8, 8 )
+polygon = PoolVector2Array( -8, -8, -8, 264, 40, 264, 40, -8 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( 280, 0 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-position = Vector2( 168, 32 )
+position = Vector2( 440, 32 )
 polygon = PoolVector2Array( 0, -32, 0, 240, 40, 240, 40, -32 )
 
 [node name="Randomizer" type="Node2D" parent="."]
@@ -76,6 +88,9 @@ num = 5
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 88, 136 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
 [node name="Screens" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -108,5 +123,17 @@ margin_left = -91.7611
 margin_top = -19.0347
 margin_right = -49.7611
 margin_bottom = -2.0347
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 10 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 480, 270 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.505882, 0.431373, 0.509804, 1 )
+material = SubResource( 2 )
+texture = ExtResource( 9 )
+centered = false
 
 [connection signal="timeout" from="Randomizer/Timer" to="Randomizer" method="_on_Timer_timeout"]

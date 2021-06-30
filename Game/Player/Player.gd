@@ -3,7 +3,7 @@ extends KinematicBody2D
 const PROJECTILE_SCENE = preload("res://Player/Player_Projectile.tscn")
 
 export var ACCELERATE = 2000
-export var MAX_SPEED = 200
+export var MAX_SPEED = 300
 export var FRICTION = 2000
 
 var velocity = Vector2.ZERO
@@ -16,7 +16,8 @@ func _ready():
 	randomize()
 
 func _physics_process(delta):
-	move_state(delta)
+	if GameData.main_menu == false:
+		move_state(delta)
 	
 func move_state(delta):
 	var input_vector = Vector2.ZERO
