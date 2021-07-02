@@ -2,9 +2,10 @@ extends Node
 
 var available_ships = [1, 2, 3, 4, 5]
 var main_menu = true
+var tutorial = false
 var game_over = false
 
-func _process(delta):
+func _process(_delta):
 	if available_ships.empty():
 		game_over = true
 

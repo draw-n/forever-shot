@@ -13,8 +13,11 @@ func _ready():
 		1:
 			self.texture = up
 
-func _process(delta):
-	self.visible = !GameData.main_menu
+func _process(_delta):
+	if GameData.main_menu == true or GameData.game_over == true:
+		self.hide()
+	else:
+		self.show()
 	match direction:
 		0:
 			label.text = str(GameData.downCount)

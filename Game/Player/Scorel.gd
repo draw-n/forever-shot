@@ -1,5 +1,8 @@
 extends Label
 
-func _process(delta):
+func _process(_delta):
 	self.text = str(GameData.enemies_destroyed)
-	self.visible = !GameData.main_menu
+	if GameData.main_menu == true or GameData.game_over == true:
+		self.hide()
+	else:
+		self.show()

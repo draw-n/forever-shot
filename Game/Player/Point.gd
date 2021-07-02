@@ -25,7 +25,7 @@ func _process(delta):
 	position += motion * delta 
 
 
-func _on_Point_body_entered(body):
+func _on_Point_body_entered(_body):
 	match direction:
 		0:
 			GameData.downCount += 1

@@ -9,7 +9,7 @@ var spawn = false
 func _ready():
 	pass # Replace with function body.
 
-func _process(delta):
+func _process(_delta):
 	if spawn == true:
 		_spawn_enemy()
 		spawn = false

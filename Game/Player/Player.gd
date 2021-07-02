@@ -16,8 +16,10 @@ func _ready():
 	randomize()
 
 func _physics_process(delta):
-	if GameData.main_menu == false:
+	if GameData.main_menu == false and GameData.tutorial == false and GameData.game_over == false:
 		move_state(delta)
+	if GameData.game_over == true:
+		queue_free()
 	
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -43,9 +45,15 @@ func move_state(delta):
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("ui_accept"): #and timer.is_stopped():
-		SoundManager.play_fixed_sound(2)
-		var projectile = PROJECTILE_SCENE.instance()
-		projectile.global_position = bulletSpawner.global_position
-		get_tree().current_scene.add_child(projectile)
+		if len(GameData.available_ships) > 1:
+			create_projectile()
+		elif len(GameData.available_ships) == 1 and timer.is_stopped():
+			create_projectile()
+			timer.start()
 		#timer.start()
 
+func create_projectile():
+	var projectile = PROJECTILE_SCENE.instance()
+	projectile.global_position = bulletSpawner.global_position
+	get_tree().current_scene.add_child(projectile)
+	SoundManager.play_fixed_sound(2)

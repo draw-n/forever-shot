@@ -6,41 +6,42 @@
 [ext_resource path="res://Enemy/Basic_enemy_projectile.gd" type="Script" id=5]
 [ext_resource path="res://Damage/HurtBox.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.131783, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.790909 ), -0.650268, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=12]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 gravity = Vector3( 10, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=14]
 radius = 6.33025
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=15]
 radius = 4.8966
 
 [node name="Basic_enemy_projectile" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-amount = 10
+position = Vector2( 4, -0.5 )
+amount = 5
 lifetime = 2.0
-process_material = SubResource( 5 )
+process_material = SubResource( 12 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -54,7 +55,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 1.19055, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 14 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 6 )]
 collision_layer = 8
@@ -62,7 +63,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 1.2097, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 15 )
 
 [node name="Position2D" parent="HurtBox" index="1"]
 position = Vector2( -4, 0 )

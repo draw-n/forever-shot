@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/EnemySpawner.tscn" type="PackedScene" id=2]
@@ -10,6 +10,16 @@
 [ext_resource path="res://Player/Counter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Base Ship/background.png" type="Texture" id=9]
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=10]
+[ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Player/arrow1.png" type="Texture" id=12]
+[ext_resource path="res://Player/arrow2.png" type="Texture" id=13]
+[ext_resource path="res://Player/arrow3.png" type="Texture" id=14]
+[ext_resource path="res://Tutorial.gd" type="Script" id=15]
+[ext_resource path="res://PressStart2P-Regular.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Base Ship/Asteroid1.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Base Ship/Asteroid2.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Base Ship/Asteroid3.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Asteroids.gd" type="Script" id=20]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -20,14 +30,23 @@ glow_blend_mode = 0
 adjustment_enabled = true
 adjustment_brightness = 1.25
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 16 )
+
+[sub_resource type="CanvasItemMaterial" id=4]
 
 [node name="Game" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( 8, 8 )
+position = Vector2( 10.8, 8 )
+scale = Vector2( 1.125, 1 )
 polygon = PoolVector2Array( -8, -8, -8, 264, 40, 264, 40, -8 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -35,6 +54,74 @@ polygon = PoolVector2Array( -8, -8, -8, 264, 40, 264, 40, -8 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 position = Vector2( 440, 32 )
 polygon = PoolVector2Array( 0, -32, 0, 240, 40, 240, 40, -32 )
+
+[node name="Asteroids" type="Node2D" parent="."]
+script = ExtResource( 20 )
+
+[node name="Asteroid1" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( 440, 136 )
+
+[node name="Asteroid10" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( 440, 24 )
+rotation = 4.71239
+
+[node name="Asteroid7" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( 440, 208 )
+
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 440, 88 )
+rotation = 1.5708
+
+[node name="Asteroid4" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 440, 184 )
+
+[node name="Asteroid9" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 440, 64 )
+
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 440, 232 )
+rotation = 3.14159
+
+[node name="Asteroid3" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( 440, 40 )
+rotation = 4.71239
+
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( 440, 112 )
+rotation = 3.14159
+
+[node name="Asteroid8" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( 56, 112 )
+rotation = 1.5708
+
+[node name="Asteroid11" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( 56, 40 )
+rotation = 3.14159
+
+[node name="Asteroid12" parent="Asteroids" instance=ExtResource( 17 )]
+position = Vector2( 56, 232 )
+
+[node name="Asteroid13" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 56, 184 )
+rotation = 1.5708
+
+[node name="Asteroid14" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 56, 88 )
+
+[node name="Asteroid15" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 56, 24 )
+
+[node name="Asteroid16" parent="Asteroids" instance=ExtResource( 18 )]
+position = Vector2( 56, 208 )
+rotation = 3.14159
+
+[node name="Asteroid17" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( 56, 64 )
+rotation = 4.71239
+
+[node name="Asteroid18" parent="Asteroids" instance=ExtResource( 19 )]
+position = Vector2( 56, 136 )
+rotation = 3.14159
 
 [node name="Randomizer" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -86,7 +173,7 @@ position = Vector2( 24, 232 )
 num = 5
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 88, 136 )
+position = Vector2( 240, 136 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -98,6 +185,7 @@ layer = 2
 visible = false
 
 [node name="GameOver" parent="Screens" instance=ExtResource( 6 )]
+visible = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -124,16 +212,206 @@ margin_top = -19.0347
 margin_right = -49.7611
 margin_bottom = -2.0347
 
+[node name="Tutorial" type="TextureRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 24.0
+margin_top = -47.0
+margin_right = 80.0
+margin_bottom = -34.0
+custom_fonts/font = SubResource( 2 )
+text = "This is you"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -184.0
+margin_top = -127.0
+margin_right = -69.0
+margin_bottom = -114.0
+custom_fonts/font = SubResource( 2 )
+text = "Don't let these get hit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 96.0
+margin_top = -103.0
+margin_right = 221.0
+margin_bottom = -90.0
+custom_fonts/font = SubResource( 2 )
+text = "Number of destroyed ships"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 112.0
+margin_top = -63.0
+margin_right = 208.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+text = "Ships come from right and gives you up and down points when destroyed"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = 97.0
+margin_right = 80.0
+margin_bottom = 129.0
+custom_fonts/font = SubResource( 2 )
+text = "Limits you to a number of times you can go up or down"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -39.0
+margin_right = -88.0
+margin_bottom = -26.0
+custom_fonts/font = SubResource( 2 )
+text = "Space to Shoot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -15.0
+margin_right = -45.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 2 )
+text = "WASD/Arrow Keys to Move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="UI/Tutorial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -108.0
+margin_top = 41.0
+margin_right = 108.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 3 )
+text = "Hit Enter to Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Tutorial"]
+margin_left = 256.0
+margin_top = 99.0
+margin_right = 306.0
+margin_bottom = 149.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Tutorial"]
+margin_left = 424.0
+margin_top = 112.0
+margin_right = 474.0
+margin_bottom = 162.0
+texture = ExtResource( 12 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Tutorial"]
+margin_left = 408.0
+margin_top = -8.0
+margin_right = 458.0
+margin_bottom = 42.0
+texture = ExtResource( 12 )
+flip_h = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Tutorial"]
+margin_left = 56.0
+margin_top = 24.0
+margin_right = 131.0
+margin_bottom = 74.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect5" type="TextureRect" parent="UI/Tutorial"]
+margin_left = 296.0
+margin_top = 240.0
+margin_right = 371.0
+margin_bottom = 290.0
+texture = ExtResource( 14 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 10 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 480, 270 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.505882, 0.431373, 0.509804, 1 )
-material = SubResource( 2 )
+material = SubResource( 4 )
 texture = ExtResource( 9 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="timeout" from="Randomizer/Timer" to="Randomizer" method="_on_Timer_timeout"]

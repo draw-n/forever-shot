@@ -9,9 +9,9 @@ func create_hit_effect():
 	hit.global_position = position2D.global_position
 	get_tree().current_scene.call_deferred("add_child", hit)
 
-func _on_HurtBox_area_entered(area):
+func _on_HurtBox_area_entered(_area):
 	create_hit_effect()
 
 
-func _on_HurtBox_body_entered(body):
+func _on_HurtBox_body_entered(_body):
 	create_hit_effect()

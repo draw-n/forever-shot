@@ -6,3 +6,4 @@ func _ready():
 func _on_Button_pressed():
 	self.hide()
 	GameData.main_menu = false
+	GameData.tutorial = true

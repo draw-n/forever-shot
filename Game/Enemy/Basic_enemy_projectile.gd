@@ -12,14 +12,15 @@ func _process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
-func _on_HitBox_area_entered(area):
+func _on_HitBox_area_entered(_area):
 	queue_free()
 
 
-func _on_HurtBox_area_entered(area):
+func _on_HurtBox_area_entered(_area):
 	spawn_point()
 	GameData.enemies_destroyed += 1
 	queue_free()
+	SoundManager.play_fixed_sound(1)
 
 
 func spawn_point():
