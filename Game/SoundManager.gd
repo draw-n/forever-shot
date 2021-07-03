@@ -11,6 +11,7 @@ var possible_sounds = [
 	preload("res://Audio/Jump3.wav"),
 	preload("res://Audio/Hit_Hurt6.wav"),
 	preload("res://Audio/Laser_Shoot5.wav"),
+	preload("res://Audio/Pickup_Coin2.wav")
 ]
 
 func _ready():

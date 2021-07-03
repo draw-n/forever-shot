@@ -31,4 +31,5 @@ func _on_Point_body_entered(_body):
 			GameData.downCount += 1
 		1:
 			GameData.upCount += 1
+	SoundManager.play_fixed_sound(3)
 	queue_free()
