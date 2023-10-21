@@ -1,10 +1,11 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Damage/HitBox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy/basic_enemy_16bit.png" type="Texture" id=2]
-[ext_resource path="res://Enemy/basicenemytrail.png" type="Texture" id=4]
+[ext_resource path="res://Assets/basic_enemy_16bit.png" type="Texture" id=2]
+[ext_resource path="res://Assets/basicenemytrail.png" type="Texture" id=4]
 [ext_resource path="res://Enemy/Basic_enemy_projectile.gd" type="Script" id=5]
 [ext_resource path="res://Damage/HurtBox.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.131783, 1 )

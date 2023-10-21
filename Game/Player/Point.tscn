@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Player/upPoint.png" type="Texture" id=1]
-[ext_resource path="res://Player/Point.gd" type="Script" id=2]
-[ext_resource path="res://Player/downPoint.png" type="Texture" id=3]
+[ext_resource path="res://Assets/upPoint.png" type="Texture" id=1]
+[ext_resource path="res://Assets/downPoint.png" type="Texture" id=2]
+[ext_resource path="res://Player/Point.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.08276
@@ -10,9 +10,9 @@ radius = 6.08276
 [node name="Point" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 upPoint = ExtResource( 1 )
-downPoint = ExtResource( 3 )
+downPoint = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 

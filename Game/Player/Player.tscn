@@ -1,8 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player/ship_player_16bit.png" type="Texture" id=1]
+[ext_resource path="res://Assets/ship_player_16bit.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Player/ship_player_bhind.png" type="Texture" id=3]
+[ext_resource path="res://Assets/ship_player_bhind.png" type="Texture" id=3]
+
 
 [sub_resource type="CanvasItemMaterial" id=7]
 blend_mode = 1
